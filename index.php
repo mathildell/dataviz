@@ -17,6 +17,8 @@
 
 		<script type="text/javascript" src="js/renderer/jqplot.barRenderer.js"></script>
 		<script type="text/javascript" src="js/renderer/jqplot.categoryAxisRenderer.js"></script>
+		<script type="text/javascript" src="js/renderer/jqplot.pieRenderer.js"></script>
+		<script type="text/javascript" src="js/renderer/jqplot.dateAxisRenderer.js"></script>
 		
 		<script type="text/javascript" src="js/dataviz.js"></script>
 	</head>
@@ -54,7 +56,7 @@
 	                			Visit user:
 	                		</label>
 	                		<div class="input-group">
-									      <input type="text" class="form-control" name="id" value="<?= $id; ?>" id="id">
+									      <input type="number" class="form-control" name="id" value="<?= $id; ?>" id="id">
 									      <div class="input-group-addon">(id)</div>
 									    </div>
 									    <input type="submit" class="btn btn-primary">
@@ -75,11 +77,26 @@
 
                 <div class="post-preview">
                     <h2 class="post-title">
-                        Hommes/femmes par tranche d'âge
+                        Répartition des amis par tranche d’âge et par sexe.
                     </h2>
 										<section class="post-meta">
 											<div id="age_sex_friends_inf"></div>
 											<div id="age_sex_friends"></div>
+										</section>
+                </div>
+
+
+                <hr>
+
+
+                <div class="post-preview">
+                    <h2 class="post-title">
+                        Popularité du profil
+                    </h2>
+										<section class="post-meta">
+						            <input type="radio" name="genre" value="feminin" checked> Femmes <br> <input type="radio" name="genre" value="masculin" > Hommes
+						            <div class="plot" id="popularite_profil_femmes"></div>
+						            <div class="plot" id="popularite_profil_hommes"></div>
 										</section>
                 </div>
 
