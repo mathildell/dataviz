@@ -510,5 +510,4 @@
     // Have to add hook here, becuase it needs called before series is inited.
     $.jqplot.preInitHooks.push(preInit);
     
-
 })(jQuery);

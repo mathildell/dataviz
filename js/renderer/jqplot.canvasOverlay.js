@@ -1017,5 +1017,4 @@
     $.jqplot.postInitHooks.push($.jqplot.CanvasOverlay.postPlotInit);
     $.jqplot.postDrawHooks.push($.jqplot.CanvasOverlay.postPlotDraw);
     $.jqplot.eventListenerHooks.push(['jqplotMouseMove', handleMove]);
-
 })(jQuery);

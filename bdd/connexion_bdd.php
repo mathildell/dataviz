@@ -1,8 +1,9 @@
-﻿<?php
+
+<?php
 	// On se connecte de la BDD
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = "root";
 	$bdd_name = "tp_note_dataviz";
 
 	// Create connection
@@ -14,5 +15,5 @@
 	}
 	
 	// Set le charset en UTF8 (pour éviter les problèmes d'accent)
-	mysqli_set_charset($conn, "utf8")
+	mysqli_set_charset($conn, "utf8");
 ?>

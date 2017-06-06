@@ -1,5 +1,4 @@
-﻿<?php
-	// Le tableau de résultat
+<?php	// Le tableau de résultat
 	$result_request = array();
 	
 	/*

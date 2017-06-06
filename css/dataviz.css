@@ -1,0 +1,22 @@
+*{
+  margin: 0;
+}
+
+#profile img{
+  display: inline-block;
+  vertical-align: middle;
+  width: 100px;
+  border-radius: 50px;
+  margin-right: 40px;
+}
+#form_nav{
+  padding: 10px 0;
+}
+#form_nav .btn{
+  line-height:1;
+  margin-left: 15px;
+  padding:10px 30px;
+}
+.intro-header .site-heading{
+  padding: 50px 0;
+}

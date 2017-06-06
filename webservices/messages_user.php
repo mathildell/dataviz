@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	// Le tableau de résultat
 	$result_request = array();
 	
@@ -34,5 +34,4 @@
 	
 	// Renvoyer le résultat au javascript
 	echo json_encode($result_request);
-
 ?>
