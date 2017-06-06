@@ -39,7 +39,14 @@
 										<?php 
 											if(file_exists("img/avatar".$id.".png")){
 												echo '<img src="img/avatar'.$id.'.png">';
-											}else{
+											}
+                                            else if(file_exists("img/avatar".$id.".jpg")){
+                                                echo '<img src="img/avatar'.$id.'.jpg">';
+                                            }
+                                            else if(file_exists("img/avatar".$id.".gif")){
+                                                echo '<img src="img/avatar'.$id.'.gif">';
+                                            }
+											else{
 												echo '<img src="http://via.placeholder.com/100x100">';
 											}
 										?>
@@ -88,6 +95,14 @@
 
                 <hr>
 
+                <div class="post-preview">
+                    <h2 class="post-title">
+                        Pourcentage d'amis masculin et féminin
+                    </h2>
+                    <section class="post-meta">
+                        <div class="plot" id="pourcentage_amis_masculin_feminin"></div>
+                    </section>
+                </div>
 
                 <div class="post-preview">
                     <h2 class="post-title">
