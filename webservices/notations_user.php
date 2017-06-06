@@ -13,7 +13,7 @@
 		
 		$user = $_GET['user'];
 	
-		$query = "SELECT noteur, photo, note
+		$query = "SELECT noteur, photo, note, date
 				FROM notations";
 		if($user != 0) {
 			$query = $query." WHERE photo IN (".$user.")";
@@ -22,7 +22,7 @@
 		$result = mysqli_query($conn, $query);
 	
 		while ($row = mysqli_fetch_array($result)) {
-			$result_request[] = array(intval($row[0]), $row[1], $row[2]);
+			$result_request[] = array(intval($row[0]), $row[1], $row[2], $row[3]);
 		}
 
 		mysqli_free_result($result);
