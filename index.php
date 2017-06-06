@@ -40,12 +40,12 @@
 											if(file_exists("img/avatar".$id.".png")){
 												echo '<img src="img/avatar'.$id.'.png">';
 											}
-                                            else if(file_exists("img/avatar".$id.".jpg")){
-                                                echo '<img src="img/avatar'.$id.'.jpg">';
-                                            }
-                                            else if(file_exists("img/avatar".$id.".gif")){
-                                                echo '<img src="img/avatar'.$id.'.gif">';
-                                            }
+                      else if(file_exists("img/avatar".$id.".jpg")){
+                          echo '<img src="img/avatar'.$id.'.jpg">';
+                      }
+                      else if(file_exists("img/avatar".$id.".gif")){
+                          echo '<img src="img/avatar'.$id.'.gif">';
+                      }
 											else{
 												echo '<img src="http://via.placeholder.com/100x100">';
 											}
@@ -109,7 +109,20 @@
                         Popularité du profil
                     </h2>
 										<section class="post-meta">
-						            <input type="radio" name="genre" value="feminin" checked> Femmes <br> <input type="radio" name="genre" value="masculin" > Hommes
+										<div class="form-group">
+												<div class="radio">
+												  <label>
+												    <input type="radio" name="genre" id="feminin" value="feminin" checked>
+												    Femmes
+												  </label>
+												</div>
+												<div class="radio">
+												  <label>
+												    <input type="radio" name="genre" id="masculin" value="masculin">
+												    Hommes
+												  </label>
+												</div>
+											</div>
 						            <div class="plot" id="popularite_profil_femmes"></div>
 						            <div class="plot" id="popularite_profil_hommes"></div>
 										</section>

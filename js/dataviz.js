@@ -23,15 +23,8 @@ $(document).ready(function(){
 	
 
 	/***************************************
-		QUESTION 1 : PIE CHART : Visite par marque
+		Répartition des amis par tranche d’âge (18-21, 22-25, 26-29) et par sexe. (4 points, JQPlot Group Bar Chart).
 	****************************************/
-	/*getRequest("webservices/infos_user.php?user="+user_id, function(data) {
-		console.log(data);
-	});*/
-
-
-
-	//Répartition des amis par tranche d’âge (18-21, 22-25, 26-29) et par sexe. (4 points, JQPlot Group Bar Chart).
 
 	getRequest("webservices/liste_amis_user.php?user="+user_id, function(amis) {
 		var  	friends = [], friend_18 = 0,
@@ -136,6 +129,9 @@ $(document).ready(function(){
 
 
 
+  /***************************************
+    Pourcentage d'amis masculin et féminin
+  ****************************************/
 
 
   function generatePieChart(idDiv, data) {
@@ -229,7 +225,7 @@ $(document).ready(function(){
     var amis_femmes = 0;
     var counter = amis.length;
     $.each(amis,function(i,ami){
-      getRequest("webservices/infos_user?user="+ami[1],function(data_ami){
+      getRequest("webservices/infos_user.php?user="+ami[1],function(data_ami){
         if(data_ami[0][7] == 0)
         {
           amis_femmes++;
@@ -252,7 +248,7 @@ $(document).ready(function(){
     }); 
   });
 
-  getRequest("webservices/notations_user?user="+user_id, function(amis) {
+  getRequest("webservices/notations_user.php?user="+user_id, function(amis) {
     var un_h = 0;
     var deux_h = 0;
     var trois_h = 0;
@@ -267,7 +263,7 @@ $(document).ready(function(){
 
     var counter = amis.length;
     $.each(amis,function(i,ami){
-      getRequest("webservices/infos_user?user="+ami[0],function(data_ami){
+      getRequest("webservices/infos_user.php?user="+ami[0],function(data_ami){
         if(data_ami[0][7] == 0)
         {
           switch(ami[2]){
@@ -323,6 +319,11 @@ $(document).ready(function(){
     }); 
   });
 
+
+  /***************************************
+   Popularité du profil
+  ****************************************/
+
   $('input:radio[name=genre]').change(function(){
         if(this.value === "feminin"){
             $("#popularite_profil_femmes").show();
@@ -332,7 +333,6 @@ $(document).ready(function(){
             $("#popularite_profil_femmes").hide();
             $("#popularite_profil_hommes").show();
         }
-        console.log("fail");
   });
 
 
