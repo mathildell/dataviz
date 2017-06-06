@@ -20,12 +20,14 @@
 	<body>
 		<?php include ('structure/header.php'); ?>
 		<div id="content">
-			<h2> Hommes </h2>
-			<div class="plot" id="popularite_profil_hommes">
-			</div>
+			<h2> Popularité du profil </h2>
 
-			<h2> Femmes </h2>
+            <input type="radio" name="genre" value="feminin" checked> Femmes <br>
+            <input type="radio" name="genre" value="masculin" > Hommes
+
 			<div class="plot" id="popularite_profil_femmes">
+			</div>
+            <div class="plot" id="popularite_profil_hommes">
 			</div>
 		</div>
 		

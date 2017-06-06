@@ -197,15 +197,30 @@ $(document).ready(function(){
 				}
 				counter--;
 				console.log(counter);
-				if(counter === 0){			
+				if(counter === 0){
+					console.log(un_f)
 					var data_tableau_femmes = [['Un',un_f],['Deux',deux_f],['Trois',trois_f],['Quatre',quatre_f],['Cinq',cinq_f]];
 					var data_tableau_hommes = [['Un',un_h],['Deux',deux_h],['Trois',trois_h],['Quatre',quatre_h],['Cinq',cinq_h]];
 					console.log(data_tableau_hommes);
-					generatePieChart("popularite_profil_hommes", data_tableau_hommes);
 					generatePieChart("popularite_profil_femmes", data_tableau_femmes);
+					generatePieChart("popularite_profil_hommes", data_tableau_hommes);
+                    $("#popularite_profil_hommes").hide();
 				}
 			});			
 		});	
 	});
+
+	$('input:radio[name=genre]').change(function(){
+        if(this.value === "feminin"){
+            $("#popularite_profil_femmes").show();
+            $("#popularite_profil_hommes").hide();
+        }
+        else if (this.value === "masculin") {
+            $("#popularite_profil_femmes").hide();
+            $("#popularite_profil_hommes").show();
+        }
+        console.log("fail");
+	});
+
 
 });
