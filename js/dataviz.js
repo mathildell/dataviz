@@ -37,7 +37,6 @@ $(document).ready(function(){
 					friend_26_f = 0,
 					friend_26_m = 0;
 					count = amis.length;
-					console.log(amis.length);
 
 		$.each(amis, function(i, ami){
 
@@ -80,7 +79,6 @@ $(document).ready(function(){
 	});
 
 	function friendRatioDone(friend_18,friend_22,friend_26,friend_18_f,friend_18_m,friend_22_f,friend_22_m,friend_26_f,friend_26_m){
-		console.log(friend_18_f, friend_18_m,friend_22_f, friend_22_m,friend_26);
 		$.jqplot.config.enablePlugins = true;
       var s1 = [friend_18_m, friend_22_m, friend_26_m]; //nmbr boys
       var s2 = [friend_18_f, friend_22_f, friend_26_f]; //nmbr of girls
@@ -234,14 +232,9 @@ $(document).ready(function(){
         {
           amis_hommes++;
         }
-        console.log();
-        console.log("hommes : "+amis_hommes);
-        console.log("femmes : "+amis_femmes);
         counter--;
-        console.log(counter);
         if(counter === 0){        
           var data_tableau = [['Amis Femmes',amis_hommes],['Amis Hommes',amis_femmes]];
-          console.log(data_tableau);
           generatePieChart("pourcentage_amis_masculin_feminin", data_tableau);
         }
       });     
@@ -305,12 +298,9 @@ $(document).ready(function(){
           }
         }
         counter--;
-        console.log(counter);
         if(counter === 0){
-          console.log(un_f)
           var data_tableau_femmes = [['Un',un_f],['Deux',deux_f],['Trois',trois_f],['Quatre',quatre_f],['Cinq',cinq_f]];
           var data_tableau_hommes = [['Un',un_h],['Deux',deux_h],['Trois',trois_h],['Quatre',quatre_h],['Cinq',cinq_h]];
-          console.log(data_tableau_hommes);
           generatePieChart("popularite_profil_femmes", data_tableau_femmes);
           generatePieChart("popularite_profil_hommes", data_tableau_hommes);
                     $("#popularite_profil_hommes").hide();
@@ -334,6 +324,73 @@ $(document).ready(function(){
             $("#popularite_profil_hommes").show();
         }
   });
+
+
+
+
+  /***************************************
+   Pourcentage de messages envoyés à des amis et à des non amis (2 points, D3 Bar Chart OU JQPlot Bar Chart OU JQPlot Pie Chart).
+  ****************************************/
+
+  getRequest("webservices/messages_user.php?user="+user_id, function(msg) {
+    var senderIds = [], friendIds = [];
+    $.each(msg, function(i, receiver){
+      senderIds.push(receiver[1]);
+
+      if(i+1 === msg.length){
+          var totalMsg = msg.length;
+      
+        getRequest("webservices/liste_amis_user.php?user="+user_id, function(friends) {
+
+          $.each(friends, function(i, friend){
+            friendIds.push(friend[1]);
+
+            if(i+1 === friends.length){
+              var isFriend = 0, isNotFriend = 0;
+
+                for(i = 0; i < senderIds.length; i++){
+                  if($.inArray(senderIds[i], friendIds) > -1){
+                    isFriend++;
+                  }else{
+                    isNotFriend++;
+                  }
+                  
+                }
+
+                //topercent
+                var msg_friends = (isFriend * 100) / totalMsg,
+                    msg_not_friend = (isNotFriend * 100) / totalMsg;
+                var data_tableau = [['Messages d\'amis',msg_friends],['Messages de non-amis',msg_not_friend]];
+              generatePieChart("percent_friends_message", data_tableau);
+
+            }
+          });
+
+
+
+        });
+
+      }
+    });
+
+    /***************************************
+     Poopularité par date
+    ****************************************/
+
+    getRequest("webservices/messages_user.php?user="+user_id, function(msg) {
+
+    });
+    /*
+    $.each(senderIds, function(i, isFriend){
+
+      messages.push(receiver[1]);
+
+    });
+    */
+  });
+
+
+
 
 
 });

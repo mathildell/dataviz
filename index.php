@@ -102,7 +102,10 @@
                     <section class="post-meta">
                         <div class="plot" id="pourcentage_amis_masculin_feminin"></div>
                     </section>
+
                 </div>
+
+                <hr>
 
                 <div class="post-preview">
                     <h2 class="post-title">
@@ -130,7 +133,19 @@
 
 
                 <hr>
+
+                <div class="post-preview">
+                    <h2 class="post-title">
+                        Pourcentage de messages reçu d'amis/non-amis
+                    </h2>
+                    <section class="post-meta">
+                        <div class="plot" id="percent_friends_message"></div>
+                    </section>
+                </div>
                 
+
+                <hr>
+
 
         </div>
     </div>
